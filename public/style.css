@@ -1,0 +1,114 @@
+/* Add spacing between form fields */
+.form-group {
+    margin-bottom: 18px;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+    background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 440px;
+    margin: 24px auto 0 auto;
+    background: #fff;
+    padding: 32px 24px 24px 24px;
+    border-radius: 22px;
+    box-shadow: 0 8px 32px rgba(60, 72, 100, 0.16);
+    border: 1.5px solid #e0e7ff;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+h1 {
+    text-align: center;
+    color: #1a237e;
+    font-size: 2.1rem;
+    margin-bottom: 32px;
+    letter-spacing: 0.7px;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    color: #28324b;
+    font-weight: 600;
+    font-size: 1.07rem;
+    letter-spacing: 0.1px;
+}
+
+input[type="text"], input[type="date"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #bfc9d9;
+    border-radius: 8px;
+    font-size: 1.08rem;
+    background: #f4f7fb;
+    transition: border 0.2s, box-shadow 0.2s;
+    outline: none;
+    margin-bottom: 2px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+input[type="text"]:focus, input[type="date"]:focus {
+    border-color: #4f8cff;
+    background: #fff;
+    box-shadow: 0 0 0 2px #e3edff;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+
+button {
+    flex: 1 1 0;
+    padding: 12px 0;
+    font-size: 1.08rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #4f8cff 0%, #6a7cff 100%);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(79, 140, 255, 0.08);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+    letter-spacing: 0.2px;
+}
+button:hover:enabled {
+    background: linear-gradient(90deg, #3a6fd8 0%, #4f8cff 100%);
+    box-shadow: 0 4px 16px rgba(79, 140, 255, 0.13);
+    transform: translateY(-2px) scale(1.03);
+}
+button:disabled,
+button.disabled {
+    background: #bfc9d9 !important;
+    color: #e6e6e6 !important;
+    cursor: not-allowed !important;
+    box-shadow: none !important;
+    transform: none !important;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+#status {
+    margin-top: 28px;
+    text-align: center;
+    color: #4f8cff;
+    min-height: 22px;
+    font-size: 1.13rem;
+    font-weight: 600;
+    letter-spacing: 0.22px;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Input Save & FTP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Dummy SSN Generation Tool</h1>
+        <div class="form-group">
+            <label for="control">Control</label>
+            <input type="text" id="control" placeholder="Enter control value..." inputmode="numeric" maxlength="7" title="Enter up to 7 digits" autocomplete="off">
+            <div id="controlError" style="color:#d32f2f;font-size:0.97em;margin-top:3px;display:none;"></div>
+        </div>
+        <div class="form-group">
+            <label for="firstName">First name</label>
+            <input type="text" id="firstName" placeholder="Enter first name..." maxlength="26" autocomplete="off">
+            <div id="firstNameError" style="color:#d32f2f;font-size:0.97em;margin-top:3px;display:none;"></div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last name</label>
+            <input type="text" id="lastName" placeholder="Enter last name..." maxlength="26" autocomplete="off">
+            <div id="lastNameError" style="color:#d32f2f;font-size:0.97em;margin-top:3px;display:none;"></div>
+        </div>
+        <div class="form-group">
+            <label for="dob">DOB</label>
+            <input type="date" id="dob">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="input" placeholder="Enter your email..." maxlength="60" autocomplete="off" style="width:100%;padding:12px 14px;border:1.5px solid #bfc9d9;border-radius:8px;font-size:1.08rem;background:#f4f7fb;transition:border 0.2s,box-shadow 0.2s;outline:none;margin-bottom:2px;font-family:inherit;box-sizing:border-box;">
+            <div id="emailError" style="color:#d32f2f;font-size:0.97em;margin-top:3px;display:none;"></div>
+        </div>
+        <div class="buttons">
+            <button id="saveBtn">Save</button>
+            <button id="transferBtn" disabled>Transfer</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+        <div id="status"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+    // Control field validation
+    const controlInput = document.getElementById('control');
+    const controlError = document.getElementById('controlError');
+    controlInput.addEventListener('input', function(e) {
+        let value = controlInput.value;
+        if (/\D/.test(value)) {
+            controlError.textContent = 'Only digits (0-9) are allowed up to 7 digits.';
+            controlError.style.display = 'block';
+            controlInput.value = value.replace(/\D/g, '');
+        } else {
+            controlError.style.display = 'none';
+        }
+        if (controlInput.value.length > 7) {
+            controlInput.value = controlInput.value.slice(0, 7);
+        }
+    });
+
+    // First name validation
+    const firstNameInput = document.getElementById('firstName');
+    const firstNameError = document.getElementById('firstNameError');
+    firstNameInput.addEventListener('input', function(e) {
+        let value = firstNameInput.value;
+        if (/[^a-zA-Z0-9]/.test(value)) {
+            firstNameError.textContent = 'Only alphanumeric characters (A-Z, a-z, 0-9) allowed.';
+            firstNameError.style.display = 'block';
+            firstNameInput.value = value.replace(/[^a-zA-Z0-9]/g, '');
+        } else {
+            firstNameError.style.display = 'none';
+        }
+        if (firstNameInput.value.length > 26) {
+            firstNameInput.value = firstNameInput.value.slice(0, 26);
+        }
+    });
+
+    // Last name validation
+    const lastNameInput = document.getElementById('lastName');
+    const lastNameError = document.getElementById('lastNameError');
+    lastNameInput.addEventListener('input', function(e) {
+        let value = lastNameInput.value;
+        if (/[^a-zA-Z0-9]/.test(value)) {
+            lastNameError.textContent = 'Only alphanumeric characters (A-Z, a-z, 0-9) allowed.';
+            lastNameError.style.display = 'block';
+            lastNameInput.value = value.replace(/[^a-zA-Z0-9]/g, '');
+        } else {
+            lastNameError.style.display = 'none';
+        }
+        if (lastNameInput.value.length > 26) {
+            lastNameInput.value = lastNameInput.value.slice(0, 26);
+        }
+    });
+
+    // Email validation
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('emailError');
+    emailInput.addEventListener('input', function(e) {
+        let value = emailInput.value;
+        // Basic email regex
+        const emailPattern = /^\S+@\S+\.\S+$/;
+        if (!emailPattern.test(value)) {
+            emailError.textContent = 'Please enter a valid email address.';
+            emailError.style.display = 'block';
+        } else {
+            emailError.style.display = 'none';
+        }
+        if (emailInput.value.length > 60) {
+            emailInput.value = emailInput.value.slice(0, 60);
+        }
+    });
+    </script>
+</body>
+</html>
