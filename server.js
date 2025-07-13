@@ -77,7 +77,7 @@ app.get('/sysinfo', (req, res) => {
 });
 
 
-const DUMMY_DIR = 'C:/Dummy';
+const DUMMY_DIR = path.join(os.tmpdir(), 'Dummy');
 const FILE_PATH = path.join(DUMMY_DIR, 'FTP_Data.txt');
 
 
@@ -110,13 +110,14 @@ app.post('/save', (req, res) => {
     const now = new Date();
     // Format dateTime in 24-hour format and remove comma
     const dateTime = now.toLocaleDateString() + ' ' + now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0') + ':' + now.getSeconds().toString().padStart(2, '0');
-    // Ensure Dummy directory exists
+    // Ensure Dummy directory exists in temp
     fs.mkdir(DUMMY_DIR, { recursive: true }, (dirErr) => {
         if (dirErr) {
             return res.json({ message: 'Error creating directory.' });
         }
         // Save with single spaces between values, no tags, and system info on next line
         const content = `${userName} ${computerName} ${dateTime} ${email} ${control} ${firstName} ${lastName} ${dob}`;
+        console.log('Saving file at:', FILE_PATH);
         fs.writeFile(FILE_PATH, content, err => {
             if (err) {
                 return res.json({ message: 'Error saving file.' });

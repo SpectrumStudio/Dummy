@@ -10,6 +10,11 @@
     <div class="container">
         <h1>Welcome to Dummy SSN Generation Tool</h1>
         <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="input" placeholder="Enter your email..." maxlength="60" autocomplete="off" style="width:100%;padding:12px 14px;border:1.5px solid #bfc9d9;border-radius:8px;font-size:1.08rem;background:#f4f7fb;transition:border 0.2s,box-shadow 0.2s;outline:none;margin-bottom:2px;font-family:inherit;box-sizing:border-box;">
+            <div id="emailError" style="color:#d32f2f;font-size:0.97em;margin-top:3px;display:none;"></div>
+        </div>
+        <div class="form-group">
             <label for="control">Control</label>
             <input type="text" id="control" placeholder="Enter control value..." inputmode="numeric" maxlength="7" title="Enter up to 7 digits" autocomplete="off">
             <div id="controlError" style="color:#d32f2f;font-size:0.97em;margin-top:3px;display:none;"></div>
@@ -27,11 +32,6 @@
         <div class="form-group">
             <label for="dob">DOB</label>
             <input type="date" id="dob">
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" class="input" placeholder="Enter your email..." maxlength="60" autocomplete="off" style="width:100%;padding:12px 14px;border:1.5px solid #bfc9d9;border-radius:8px;font-size:1.08rem;background:#f4f7fb;transition:border 0.2s,box-shadow 0.2s;outline:none;margin-bottom:2px;font-family:inherit;box-sizing:border-box;">
-            <div id="emailError" style="color:#d32f2f;font-size:0.97em;margin-top:3px;display:none;"></div>
         </div>
         <div class="buttons">
             <button id="saveBtn">Save</button>
